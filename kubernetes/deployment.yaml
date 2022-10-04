@@ -6,13 +6,11 @@ metadata:
     app: exercise
 spec:
   containers:
-    - name: exercise-app
-      image: exercise-app
-      args:
-        - "-text=exercise-app"
-
+  - name: exercise-app
+    image: exercise-app
+    args:
+    - "-text=exercise"
 ---
-
 kind: Service
 apiVersion: v1
 metadata:
@@ -21,4 +19,5 @@ spec:
   selector:
     app: exercise
   ports:
-    - port: 5000 # Default port for image
+  # Default port used by the image
+  - port: 5000

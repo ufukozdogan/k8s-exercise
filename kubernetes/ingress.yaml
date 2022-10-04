@@ -1,14 +1,15 @@
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: example-ingress
-  annotations:
-    ingress.kubernetes.io/rewrite-target: /
+  name: exercise-ingress
 spec:
   rules:
   - http:
       paths:
-        - path: /
-          backend:
-            serviceName: exercise-service
-            servicePort: 5000
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: exercise-service
+            port:
+              number: 5000
