@@ -1,0 +1,24 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: exercise-app
+  labels:
+    app: exercise
+spec:
+  containers:
+    - name: exercise-app
+      image: exercise-app
+      args:
+        - "-text=exercise-app"
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: exercise-service
+spec:
+  selector:
+    app: exercise
+  ports:
+    - port: 5000 # Default port for image
