@@ -1,5 +1,10 @@
+from flask import Flask
 import time, socket
 
-ts = time.time()
-print('Timestamp:', ts)
-print('Hostname:', socket.gethostname())
+app = Flask(__name__)
+
+@app.route("/")
+def home():
+    ts = time.time()
+    hostname = socket.gethostname()
+    return {'timestamp' : ts, 'hostname': hostname}, 200
